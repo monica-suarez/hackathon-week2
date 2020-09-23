@@ -5,9 +5,10 @@ import AuthorSearch from "./component/ApiApp/AuthorSearch";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state={
       stories: [],
-    };
+      firstSearch: ''
+    }
   }
   componentDidMount() {
     fetch(
@@ -35,6 +36,20 @@ class App extends React.Component {
         </div>
       </div>
     );
+  handleUpdate = (event) =>{
+    this.setState({
+        firstSearch: event.target.value
+    })
+}
+handleClick = (event) =>{
+  event.preventDefault()
+}
+  render(){
+  return (
+    <div className="App">
+    <h1 className="title">Welcome to our 411 Hackathon!</h1>
+    </div>
+  );
   }
 }
 
