@@ -1,27 +1,40 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import AuthorSearch from "./component/ApiApp/AuthorSearch";
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      stories: []
-    }
+    this.state = {
+      stories: [],
+    };
   }
-  componentDidMount(){
-    fetch('https://hn.algolia.com/api/v1/search_by_date?tags=&hitsPerPage=25')
-    .then(response => response.json())
-    .then(data => this.setState({
-      stories: data
-    }
-    ))
+  componentDidMount() {
+    fetch(
+      "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=25"
+    )
+      .then((response) => response.json())
+      .then((data) =>
+        this.setState({
+          stories: data.hits,
+        })
+      );
   }
-  render(){
-  return (
-    <div className="App">
-    <h1 className="title">Welcome to our 411 Hackathon!</h1>
-    </div>
-  );
+
+  componentDidUpdate() {
+    console.log(this.state.stories);
+  }
+  render() {
+    return (
+      <div className="App">
+        <h1 className="title">Welcome to our 411 Hackathon!</h1>
+        <div>
+          {this.state.stories.map((story, index) => (
+            <AuthorSearch story={story} />
+          ))}
+        </div>
+      </div>
+    );
   }
 }
 
