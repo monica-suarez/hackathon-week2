@@ -25,6 +25,14 @@ class App extends React.Component {
   componentDidUpdate() {
     console.log(this.state.stories);
   }
+  handleUpdate = (event) =>{
+    this.setState({
+        firstSearch: event.target.value
+    })
+}
+handleClick = (event) =>{
+  event.preventDefault()
+}
   render() {
     return (
       <div className="App">
@@ -36,21 +44,9 @@ class App extends React.Component {
         </div>
       </div>
     );
-  handleUpdate = (event) =>{
-    this.setState({
-        firstSearch: event.target.value
-    })
+
+
 }
-handleClick = (event) =>{
-  event.preventDefault()
-}
-  render(){
-  return (
-    <div className="App">
-    <h1 className="title">Welcome to our 411 Hackathon!</h1>
-    </div>
-  );
-  }
 }
 
 export default App;
