@@ -5,7 +5,8 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      stories: []
+      stories: [],
+      firstSearch: ''
     }
   }
   componentDidMount(){
@@ -16,6 +17,14 @@ class App extends React.Component {
     }
     ))
   }
+  handleUpdate = (event) =>{
+    this.setState({
+        firstSearch: event.target.value
+    })
+}
+handleClick = (event) =>{
+  event.preventDefault()
+}
   render(){
   return (
     <div className="App">
