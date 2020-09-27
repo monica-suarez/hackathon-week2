@@ -1,11 +1,13 @@
 import React from 'react';
+import InputForm from '../InputForm/InputForm'
 
 const AuthorSearch = (props) => {
     return (
         <div>
-        <h4>{props.story.title}</h4>
-        <h3>Author: {props.story.author}</h3>
-        <a href={props.story.url}>{props.story.url}</a>
+        <div>testing</div>
+    
+        <InputForm ></InputForm>
+        {/* <a href={props.story.url}>{props.story.url}</a> */}
         </div>
     )
 
