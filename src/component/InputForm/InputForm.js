@@ -3,6 +3,7 @@ import React from 'react';
 
 
 
+
 const InputForm = (author, title, date) =>{
  return(
     <form>
@@ -28,3 +29,5 @@ const InputForm = (author, title, date) =>{
 }
 
 export default InputForm;
+
+
