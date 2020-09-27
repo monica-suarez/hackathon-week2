@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import AuthorSearch from "./component/AuthorSearch/AuthorSearch";
+import InputForm from "./component/InputForm/InputForm";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ handleClick = (event) =>{
         <h1 className="title">Search Hacker News</h1>
         <div>
           {this.state.stories.map((story, index) => (
-            <AuthorSearch index = {index} story={story} />
+            <InputForm index={index} story={story}></InputForm>
           ))}
         </div>
       </div>
