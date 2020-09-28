@@ -8,12 +8,13 @@ class App extends React.Component {
     super(props);
     this.state={
       stories: [],
+      filteredStories: [], 
       search: ''
     }
   }
   componentDidMount() {
     fetch(
-      "https://hn.algolia.com/api/v1/search_by_date?query=&hitsPerPage=50"
+      "https://hn.algolia.com/api/v1/search_by_date?query=story&hitsPerPage=50"
     )
       .then((response) => response.json())
       .then((data) =>
@@ -33,9 +34,15 @@ class App extends React.Component {
 }
 handleClick = (event) =>{
   event.preventDefault()
+
+  let filteredResults = this.state.stories.filter(story => { 
+    return story.author.toLowercase().includes(this.state.search.toLowercase())
+          || story.story_title.toLowercase().includes(this.state.search.toLowercase())
+          || story.created_at.toLowercase().includes(this.state.search.toLowercase())
+  })
+
   this.setState({
-    stories: [...this.state.stories], 
-    search: ''
+    filteredStories: filteredResults
   })
 }
   render() {
@@ -43,10 +50,10 @@ handleClick = (event) =>{
       <div className="App">
         <h1 className="title">Search Hacker News</h1>
         <div>
-        <InputForm ></InputForm>
+        <InputForm handleClick={this.handleClick} handleUpdate={this.handleUpdate}></InputForm>
           <ul>
-          {this.state.stories.map((story, index) => (
-            <SearchResults index={index}/>
+          {this.state.filteredStories.map((story, index) => (
+            <SearchResults story={story} index={index}/>
           ))}
           </ul>
         </div>
