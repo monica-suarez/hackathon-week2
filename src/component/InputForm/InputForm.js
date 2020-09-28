@@ -2,26 +2,18 @@ import React from 'react';
 
 
 
-
-
-const InputForm = (author, title, date) =>{
+const InputForm = (props, searchInput) =>{
  return(
-    <form>
-    <select>
-        <option className="placeholder" value="" defaultValue hidden>Select Search Criteria</option>
-        <option value='author' name='author' author={author}>Author</option>
-        <option value='title' name='title' title={title}>Title</option>
-        <option value='date' name='date' date={date}>Date</option>
-    </select>
-    <br/>
-    <br/>
-    <input type="date"/>
-    <br/>
-    <br/>
-    <input type="type" /> 
-    <br/>
-    <br/>
-    <button>Submit</button>
+    <form onSubmit={props.handleClick}>
+        <label htmlFor='searchInput'>
+            By Author:
+        </label>
+            <br/>
+            <br/>
+        <input type="text" name='searchInput' placeholder='Enter Keyword/Date' searchInput ={searchInput}/>
+             <br/>
+             <br/>
+        <button type="submit">Submit</button>
     <br/>
     <br/>
     </form>

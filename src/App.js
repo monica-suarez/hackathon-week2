@@ -7,8 +7,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      stories: [],
-      search: ''
+      stories: [], 
+      author: '',
+      title: '', 
+      date: ''
     }
   }
   componentDidMount() {
@@ -28,14 +30,21 @@ class App extends React.Component {
   }
   handleUpdate = (event) =>{
     this.setState({
-        search: event.target.value
+        [event.target.name]: event.target.value
     })
 }
 handleClick = (event) =>{
   event.preventDefault()
+  // const filteredResults = 
+  //   if(this.state.stories.author === event.target.value || this.state.stories.title === event.target.value || this.state.stories.date ===event.target.value){
+  //     return this.state.stories
+  //   }
+  // }
   this.setState({
     stories: [...this.state.stories], 
-    search: ''
+    author: '',
+    title: '',
+    date: ''
   })
 }
   render() {
@@ -43,7 +52,7 @@ handleClick = (event) =>{
       <div className="App">
         <h1 className="title">Search Hacker News</h1>
         <div>
-        <InputForm ></InputForm>
+        <InputForm handleClick={this.handleClick}></InputForm>
           <ul>
           {this.state.stories.map((story, index) => (
             <SearchResults index={index}/>
