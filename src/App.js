@@ -14,7 +14,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     fetch(
-      "https://hn.algolia.com/api/v1/search_by_date?query=story&hitsPerPage=50"
+      "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=50"
     )
       .then((response) => response.json())
       .then((data) =>
@@ -36,9 +36,10 @@ handleClick = (event) =>{
   event.preventDefault()
 
   let filteredResults = this.state.stories.filter(story => { 
-    return story.author.toLowercase().includes(this.state.search.toLowercase())
-          || story.story_title.toLowercase().includes(this.state.search.toLowercase())
-          || story.created_at.toLowercase().includes(this.state.search.toLowercase())
+    console.log(story.story_title)
+    return story.author.toLowerCase().includes(this.state.search.toLowerCase()) 
+    || story.title.toLowerCase().includes(this.state.search.toLowerCase())
+     || story.created_at.toLowerCase().includes(this.state.search.toLowerCase())
   })
 
   this.setState({
