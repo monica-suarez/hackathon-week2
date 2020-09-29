@@ -43,8 +43,9 @@ handleClick = (event) =>{
   })
 
   this.setState({
-    filteredStories: filteredResults
-  })
+    search: '',
+    filteredStories: filteredResults 
+    })
 }
   render() {
     return (
