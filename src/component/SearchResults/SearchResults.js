@@ -1,11 +1,13 @@
 import React from 'react';
 
+
 const SearchResults = (props)=>{
 return(
     <li key={props.index}>
-        <h2>Title: {props.story.story_title}</h2>
+        <a className='articleLink' style={{color: 'darkviolet'}} href={props.story.url}><h3>Title: {props.story.title}</h3></a>
         <p>Author: {props.story.author}</p>
         <p>Date Created: {props.story.created_at}</p>
+        <br/>
     </li>
 )
 }
