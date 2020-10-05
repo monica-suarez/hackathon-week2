@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import AuthorSearch from "./component/ApiApp/AuthorSearch";
+import AuthorSearch from "./component/AuthorSearch/AuthorSearch";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     fetch(
-      "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=25"
+      "https://hn.algolia.com/api/v1/search_by_date?query=&hitsPerPage=50"
     )
       .then((response) => response.json())
       .then((data) =>
@@ -21,7 +21,6 @@ class App extends React.Component {
         })
       );
   }
-
   componentDidUpdate() {
     console.log(this.state.stories);
   }
@@ -36,10 +35,10 @@ handleClick = (event) =>{
   render() {
     return (
       <div className="App">
-        <h1 className="title">Welcome to our 411 Hackathon!</h1>
+        <h1 className="title">Search Hacker News</h1>
         <div>
           {this.state.stories.map((story, index) => (
-            <AuthorSearch story={story} />
+            <AuthorSearch index = {index} story={story} />
           ))}
         </div>
       </div>
