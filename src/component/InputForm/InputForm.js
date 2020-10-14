@@ -1,7 +1,6 @@
 import React from 'react'; 
 
 
-
 const InputForm = (props, searchinput) =>{
  return(
     <form onSubmit={props.handleClick}>
@@ -21,5 +20,3 @@ const InputForm = (props, searchinput) =>{
 }
 
 export default InputForm;
-
-
